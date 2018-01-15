@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar Livro</title>
+</head>
+<body>
+    <h1>Cadastrar Livro</h1>
+    <%if(erros){%>
+        <ul>
+            <%for(var i = 0; i < erros.length; i++){%>
+                <li><%=erros[i].param%> - <%=erros[i].msg%></li>
+            <%}%>
+        </ul>
+    <%}%>
+    <form action="/produtos" method="post">
+        <div>
+            <label for="titulo">Título</label>
+            <input type="text" name="titulo" id="titulo" value="<%=produto.titulo%>" placeholder="Título do livro">
+        </div>
+        <div>
+            <label for="preco">Proço</label>
+            <input type="text" name="preco" id="preco" value="<%=produto.preco%>" placeholder="99.99">
+        </div>
+        <div>
+            <label for="descricao">Descrição</label>
+            <textarea name="descricao" id="descricao" cols="30" rows="10"><%=produto.descricao%></textarea>
+        </div>
+        <input type="submit" value="Cadastrar">
+    </form>
+</body>
+</html>
