@@ -1,37 +1,17 @@
-var http = require("http");
-var assert = require("assert");
+var express = require("../config/express")();
+var request = require("supertest")(express);
 
-describe('Endpoint /produtos', function(){
-    it('#Lista produtos json', function(done){
-        var configuracoes = {
-            host: "localhost",
-            port: 3000,
-            path: "/produtos",
-            headers: {
-                "Accept": "application/json"
-            }
-        };
-
-        http.get(configuracoes, function(res){
-            assert.equal(res.statusCode, 200);
-            assert.equal(res.headers["content-type"], "application/json; charset=utf-8");
-            done();
-        });
+describe('#Endpoint /produtos', function(){
+    it('#Listar produtos json', function(done){
+        request.get('/produtos')
+        .set('Accept','application/json')
+        .expect('Content-Type',/json/)
+        .expect(200,done);
     });
-    it('#Lista produtos html', function(done){
-        var configuracoes = {
-            host: "localhost",
-            port: 3000,
-            path: "/produtos",
-            headers: {
-                "Accept": "text/html"
-            }
-        };
-
-        http.get(configuracoes, function(res){
-            assert.equal(res.statusCode, 200);
-            assert.equal(res.headers["content-type"], "text/html; charset=utf-8");
-            done();
-        });
+    it('#Listar produtos html', function(done){
+        request.get('/produtos')
+        .set('Accept','text/hml')
+        .expect('Content-Type',/html/)
+        .expect(200,done);
     });
 });
