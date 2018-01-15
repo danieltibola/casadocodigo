@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon app",
-    "test": "node ./node_modules/mocha/bin/mocha"
+    "test": "set NODE_ENV=test&& node ./node_modules/mocha/bin/mocha"
   },
-  "author": "alberto",
+  "author": "Daniel",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.2",
