@@ -5,7 +5,7 @@ module.exports = function(app){
 
     produtoDAO.listar(function(err, data){
       if(err){
-        return next();
+        return next(err);
       }
       res.render('promocoes/form',{lista:data});
     });
